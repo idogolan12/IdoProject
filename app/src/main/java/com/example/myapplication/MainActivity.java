@@ -2,9 +2,11 @@ package com.example.myapplication;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     String st;
     int size;
     int counter = 0;
-    int b;
+
 
 
     @Override
@@ -108,6 +110,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
             BGT.addView(bt[i], btnWidth, btnHeight);
             String ab = a.charAt(i) + "";
             bt[i].setText(ab);
+            bt[i].setBackgroundColor(0x00FFFFFF);
             bt[i].setOnClickListener(this);
         }
 
