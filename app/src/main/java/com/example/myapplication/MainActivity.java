@@ -53,6 +53,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         BGT.setColumnCount(11);
         Build_board2();
         newGame();
+        Toast.makeText(this, "g", Toast.LENGTH_SHORT).show();
 
 
     }
