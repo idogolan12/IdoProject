@@ -182,12 +182,18 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     {
         Toast.makeText(this, "finish game", Toast.LENGTH_SHORT).show();
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
-        adb.setTitle("איש תלוי                                                ");
-        adb.setMessage("האם אתה רוצה להמשיך לשחק או לצאת");
-        adb.setPositiveButton("לשחק", new DialogInterface.OnClickListener() {
+        adb.setTitle( "לא הצלחת לנחש את המילה והפסדת:(      "  );
+        adb.setMessage("המילה הייתה" + " " + "*" + av + "*" + " " + "מה תרצה לעשות");
+        adb.setPositiveButton("לשחק שוב באותו נושא", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 startActivity(go);
+            }
+        });
+        adb.setNeutralButton("משחקי איש תלוי נוספים", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+
             }
         });
         adb.setNegativeButton("לצאת", new DialogInterface.OnClickListener() {
@@ -196,6 +202,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                 Toast.makeText(MainActivity.this, "aa", Toast.LENGTH_SHORT).show();
             }
         });
+
 
         AlertDialog ad = adb.create();
         ad.show();
