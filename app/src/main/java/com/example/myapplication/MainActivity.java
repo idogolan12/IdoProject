@@ -112,7 +112,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
             String ab = a.charAt(i) + "";
             bt[i].setText(ab);
             bt[i].setBackgroundColor(0x00FFFFFF);
-            bt[i].setOnClickListener(this);//j
+            bt[i].setOnClickListener(this);
         }
 
     }
