@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
     String av;
     GridLayout BGT;
     LinearLayout LLLet;
-    int btnWidth = 100, btnHeight = 100;
+    int btnWidth = 95, btnHeight = 95;
     String a = "כיטחזוהדגבאתשרקצפעסנמלץףךןם";
     int G = a.length();
     Button[] bt = new Button[G];
@@ -92,11 +92,12 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
 
     private void Build_board1(int NumLet , String st1) {
         //LLLet.clear...
-        for (int i = 0; i < NumLet; i++) {
+        for (int i = 0; i < NumLet; i++) {//
             tv[i] = new TextView(LLLet.getContext());
             LLLet.addView(tv[i], btnWidth, btnHeight);
             tv[i].setText("____");
-            if (st1.charAt(i) == ' ') {
+            if (st1.charAt(i) == ' ')
+            {
                 tv[i].setVisibility(View.INVISIBLE);
                 counter=1;
             }
@@ -111,14 +112,13 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
             String ab = a.charAt(i) + "";
             bt[i].setText(ab);
             bt[i].setBackgroundColor(0x00FFFFFF);
-            bt[i].setOnClickListener(this);
+            bt[i].setOnClickListener(this);//j
         }
 
     }
 
     @Override
     public void onClick(View v) {
-        String a = ((Button) v).getText().toString();
         if (av.indexOf(((Button) v).getText().toString()) != -1)
         {
             for (int i = 0; i < av.length(); i++)
@@ -128,7 +128,28 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
                     tv[av.length() - i - 1].setText(((Button) v).getText());
                     counter++;
                     if (counter == av.length())
-                        newGame();
+                    {
+                        AlertDialog.Builder ads = new AlertDialog.Builder(this);
+                    ads.setTitle("איש תלוי                                                ");
+                    ads.setMessage("האם אתה רוצה להמשיך למילה הבאה או לצאת");
+                    ads.setPositiveButton("להמשיך", new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            newGame();
+                        }
+                    });
+                    ads.setNegativeButton("לצאת", new DialogInterface.OnClickListener()
+                    {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            Toast.makeText(MainActivity.this, "aa", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+
+                    AlertDialog ad = ads.create();
+                    ad.show();
+                    }
 
 
                 }
@@ -162,25 +183,20 @@ public class MainActivity extends AppCompatActivity  implements View.OnClickList
         Toast.makeText(this, "finish game", Toast.LENGTH_SHORT).show();
         AlertDialog.Builder adb = new AlertDialog.Builder(this);
         adb.setTitle("איש תלוי                                                ");
-        adb.setMessage("הפסדת! אתה רוצה לשחק שוב באותו נושא?לשחק בנושאים אחרים של המשחק איש תלוי או לשחק במשחק אחר");
-        adb.setPositiveButton("לשחק שוב באותו נושא", new DialogInterface.OnClickListener() {
+        adb.setMessage("האם אתה רוצה להמשיך לשחק או לצאת");
+        adb.setPositiveButton("לשחק", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 startActivity(go);
             }
         });
-        adb.setNegativeButton("לבחור בנושאים אחרים במשחק איש תלוי", new DialogInterface.OnClickListener() {
+        adb.setNegativeButton("לצאת", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Toast.makeText(MainActivity.this, "aa", Toast.LENGTH_SHORT).show();
             }
         });
-        adb.setNeutralButton("לשחק במשחק אחר", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                Toast.makeText(MainActivity.this, "work", Toast.LENGTH_SHORT).show();
-            }
-        });
+
         AlertDialog ad = adb.create();
         ad.show();
     }
